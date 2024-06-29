@@ -14,6 +14,7 @@
                 <input type="file" id="profilePicInput" accept="image/*">
                 Edit
             </label>
+            <button id="deletePicButton">Hapus Foto</button>
             <h2 id="sidebarName">Nama Anda</h2>
             <p id="sidebarEmail"></p>
             <p id="sidebarPhone"></p>
@@ -92,6 +93,16 @@
                 document.getElementById('profilePic').src = reader.result;
             }
             reader.readAsDataURL(event.target.files[0]);
+        });
+
+        document.getElementById('deletePicButton').addEventListener('click', function() {
+            // Hapus data dari localStorage
+            localStorage.removeItem('profilePic');
+            
+            // Mengembalikan foto profil ke gambar placeholder atau default
+            document.getElementById('profilePic').src = 'images.png'; // Ganti dengan path gambar placeholder atau default
+            
+            alert('Foto profil berhasil dihapus');
         });
 
         // Memuat data yang disimpan saat halaman dimuat
