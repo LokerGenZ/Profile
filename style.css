@@ -1,0 +1,122 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 25%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+h2, p {
+    text-align: center;
+    margin: 10px 0;
+}
+
+#profilePicInput {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.header button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.header button:hover {
+    background-color: #0056b3;
+}
+
+.about {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+#saveButton {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+#saveButton:hover {
+    background-color: #218838;
+}

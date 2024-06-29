@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img src="images.png" alt="Gambar Profil" class="profile-pic" id="profilePic" width="100" height="100">
+            <label class="custom-file-upload">
+                <input type="file" id="profilePicInput" accept="image/*">
+                Edit
+            </label>
+            <h2 id="sidebarName">Nama Anda</h2>
+            <p id="sidebarEmail"></p>
+            <p id="sidebarPhone"></p>
+            <p id="sidebarAddress"></p>
+        </div>
+        <div class="main">
+            <div class="header">
+                <button id="homeButton">Home</button>
+                <button id="logoutButton">Logout</button>
+            </div>
+            <h1>About</h1>
+            <div class="about">
+                <div class="info">
+                    <div class="field">
+                        <label for="full-name">Nama:</label>
+                        <input type="text" id="full-name" placeholder="Masukkan nama Anda">
+                    </div>
+                    <div class="field">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="Masukkan email Anda">
+                    </div>
+                    <div class="field">
+                        <label for="phone">Telepon:</label>
+                        <input type="tel" id="phone" placeholder="Masukkan nomor telepon Anda">
+                    </div>
+                    <div class="field">
+                        <label for="address">Alamat:</label>
+                        <input type="text" id="address" placeholder="Masukkan alamat Anda">
+                    </div>
+                    <div class="field">
+                        <label for="description">Deskripsi:</label>
+                        <textarea id="description" placeholder="Masukkan deskripsi tentang diri Anda"></textarea>
+                    </div>
+                    <button id="saveButton">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('homeButton').addEventListener('click', function() {
+            window.location.href = 'https://lokergenz.github.io/Home/';
+        });
+
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            window.location.href = 'https://lokergenz.github.io/Login/';
+        });
+
+        document.getElementById('saveButton').addEventListener('click', function() {
+            const name = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const description = document.getElementById('description').value;
+            const profilePic = document.getElementById('profilePic').src;
+
+            // Menyimpan data ke localStorage
+            localStorage.setItem('profileName', name);
+            localStorage.setItem('profileEmail', email);
+            localStorage.setItem('profilePhone', phone);
+            localStorage.setItem('profileAddress', address);
+            localStorage.setItem('profileDescription', description);
+            localStorage.setItem('profilePic', profilePic);
+
+            // Memperbarui sidebar
+            document.getElementById('sidebarName').innerText = name;
+            document.getElementById('sidebarEmail').innerText = email;
+            document.getElementById('sidebarPhone').innerText = phone;
+            document.getElementById('sidebarAddress').innerText = address;
+
+            alert('Data berhasil disimpan');
+        });
+
+        document.getElementById('profilePicInput').addEventListener('change', function(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                document.getElementById('profilePic').src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        // Memuat data yang disimpan saat halaman dimuat
+        window.onload = function() {
+            if (localStorage.getItem('profileName')) {
+                const savedName = localStorage.getItem('profileName');
+                document.getElementById('full-name').value = savedName;
+                document.getElementById('sidebarName').innerText = savedName;
+            }
+            if (localStorage.getItem('profileEmail')) {
+                const savedEmail = localStorage.getItem('profileEmail');
+                document.getElementById('email').value = savedEmail;
+                document.getElementById('sidebarEmail').innerText = savedEmail;
+            }
+            if (localStorage.getItem('profilePhone')) {
+                const savedPhone = localStorage.getItem('profilePhone');
+                document.getElementById('phone').value = savedPhone;
+                document.getElementById('sidebarPhone').innerText = savedPhone;
+            }
+            if (localStorage.getItem('profileAddress')) {
+                const savedAddress = localStorage.getItem('profileAddress');
+                document.getElementById('address').value = savedAddress;
+                document.getElementById('sidebarAddress').innerText = savedAddress;
+            }
+            if (localStorage.getItem('profileDescription')) {
+                const savedDescription = localStorage.getItem('profileDescription');
+                document.getElementById('description').value = savedDescription;
+            }
+            if (localStorage.getItem('profilePic')) {
+                document.getElementById('profilePic').src = localStorage.getItem('profilePic');
+            }
+        };
+    </script>
+</body>
+</html>
